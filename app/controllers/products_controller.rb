@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :xml, :json
+
   # GET /products
   # GET /products.json
   def index
@@ -30,15 +32,15 @@ class ProductsController < ApplicationController
 
     respond_with(@product)
     # remove this?
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @product.save
+    #     format.html { redirect_to @product, notice: 'Product was successfully created.' }
+    #     format.json { render :show, status: :created, location: @product }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @product.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /products/1
